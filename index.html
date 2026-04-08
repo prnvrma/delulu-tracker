@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JEE Advanced 2026 · Priority Checklist</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root { 
+  --t: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+  --max-w: 1100px; 
+}
+
+[data-theme="dark"] {
+  --bg-color: #050505;
+  --bg-mesh: radial-gradient(circle at 50% 0%, #201830 0%, #050505 70%);
+  --surface: rgba(20, 20, 24, 0.6);
+  --card: rgba(30, 30, 36, 0.4);
+  --elevated: rgba(45, 45, 55, 0.5);
+  --hover: rgba(255, 255, 255, 0.04);
+  --b0: rgba(255,255,255,0.03);
+  --b1: rgba(255,255,255,0.08);
+  --b2: rgba(255,255,255,0.15);
+  --t1: #ffffff;
+  --t2: #a1a1aa;
+  --t3: #71717a;
+  --amber: #f59e0b;
+  --amber-lo: rgba(245,158,11,0.1);
+  --amber-hi: #fbbf24;
+  --grad: linear-gradient(135deg, #f59e0b, #ef4444);
+  --phy: #3b82f6; --phy-lo: rgba(59,130,246,.1);
+  --che: #10b981; --che-lo: rgba(16,185,129,.1);
+  --mat: #8b5cf6; --mat-lo: rgba(139,92,246,.1);
+  --pa: #f59e0b; --pb: #3b82f6; --pc: #a1a1aa;
+  --ok: #34d399; --err: #f87171;
+  --sb: #18181b; --st: #3f3f46;
+}
+
+[data-theme="light"] {
+  --bg-color: #f8fafc;
+  --bg-mesh: radial-gradient(circle at 50% 0%, #ffffff 0%, #f0f4f8 70%);
+  --surface: rgba(255, 255, 255, 0.7);
+  --card: rgba(255, 255, 255, 0.9);
+  --elevated: #ffffff;
+  --hover: rgba(0, 0, 0, 0.02);
+  --b0: rgba(0,0,0,0.04);
+  --b1: rgba(0,0,0,0.08);
+  --b2: rgba(0,0,0,0.15);
+  --t1: #0f172a;
+  --t2: #475569;
+  --t3: #94a3b8;
+  --amber: #d97706;
+  --amber-lo: rgba(217,119,6,0.1);
+  --amber-hi: #b45309;
+  --grad: linear-gradient(135deg, #f59e0b, #ef4444);
+  --phy: #2563eb; --phy-lo: rgba(37,99,235,.1);
+  --che: #059669; --che-lo: rgba(5,150,105,.1);
+  --mat: #7c3aed; --mat-lo: rgba(124,58,237,.1);
+  --pa: #d97706; --pb: #2563eb; --pc: #64748b;
+  --ok: #059669; --err: #dc2626;
+  --sb: #e2e8f0; --st: #94a3b8;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;
+  background-color: var(--bg-color);
+  background-image: var(--bg-mesh);
+  background-attachment: fixed;
+  color:var(--t1);
+  min-height:100vh;
+  overflow-x:hidden;
+  transition: background var(--t), color var(--t); 
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--st);border-radius:10px;border:2px solid var(--bg-color)}
+
+.inner{max-width:var(--max-w);margin:0 auto;width:100%;padding:0 1.5rem;}
+.glass { background: var(--surface); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+
+/* ── NAV ── */
+.nav { position: relative; padding: 1.5rem 0; border-bottom: 1px solid var(--b0); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.nav-brand { display: flex; align-items: center; gap: 1rem; }
+.nav-logo { width: 42px; height: 42px; border-radius: 14px; background: var(--grad); display: flex; align-items: center; justify-content: center; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 0.75rem; color: #fff; letter-spacing: 0.05em; box-shadow: 0 4px 20px rgba(239, 68, 68, 0.2); }
+.nav-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.15rem; color: var(--t1); line-height: 1.2; }
+.nav-sub { font-size: 0.75rem; color: var(--t3); font-family: 'IBM Plex Mono', monospace; }
+.nav-actions { display: flex; align-items: center; gap: 0.75rem; }
+
+/* ── BUTTONS & TOGGLES ── */
+.btn-icon { background: var(--card); border: 1px solid var(--b1); color: var(--t2); width: 38px; height: 38px; border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all var(--t); box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+.btn-icon:hover { background: var(--hover); color: var(--t1); border-color: var(--b2); transform: translateY(-1px); }
+
+.theme-toggle { position: relative; width: 64px; height: 34px; background: var(--card); border: 1px solid var(--b1); border-radius: 999px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: 0 8px; transition: all var(--t); box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+.theme-toggle:hover { border-color: var(--b2); }
+.theme-toggle svg { width: 14px; height: 14px; z-index: 2; color: var(--t3); pointer-events: none; transition: color var(--t); }
+.theme-toggle .thumb { position: absolute; top: 3px; left: 3px; width: 26px; height: 26px; background: var(--grad); border-radius: 50%; z-index: 1; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+[data-theme="light"] .theme-toggle .thumb { transform: translateX(30px); background: #1e293b; }
+[data-theme="dark"] .theme-toggle .moon { color: #fff; }
+[data-theme="light"] .theme-toggle .sun { color: #fff; }
+
+/* ── HERO ── */
+.hero { padding: 3.5rem 0 2.5rem; position: relative; }
+.hero-title { font-family: 'Sora', sans-serif; font-size: clamp(1.8rem, 4vw, 2.75rem); font-weight: 800; color: var(--t1); line-height: 1.1; letter-spacing: -0.02em; }
+.hero-title span { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { font-size: 0.95rem; color: var(--t2); margin-top: 0.75rem; margin-bottom: 2.5rem; font-weight: 500; }
+.hero-sub i { color: var(--amber); font-style: italic; opacity: 0.9; }
+
+/* Dashboard Cards */
+.dash-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 3rem; }
+@media(min-width: 768px) { .dash-grid { grid-template-columns: 2fr 1fr 1fr 1fr; } }
+
+.dash-card { background: var(--card); border: 1px solid var(--b1); border-radius: 20px; padding: 1.5rem; transition: all var(--t); position: relative; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.02); }
+.dash-card:hover { border-color: var(--b2); box-shadow: 0 8px 32px rgba(0,0,0,0.06); }
+.dash-card::after { content:''; position:absolute; top:0; left:0; width:100%; height:3px; opacity: 0.8; }
+.dash-card.ov::after { background: var(--grad); }
+.dash-card.phy::after { background: var(--phy); }
+.dash-card.che::after { background: var(--che); }
+.dash-card.mat::after { background: var(--mat); }
+
+.dc-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; }
+.dc-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--t3); font-family: 'IBM Plex Mono', monospace; }
+.dc-pct { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.75rem; line-height: 1; color: var(--t1); }
+.dash-card.ov .dc-pct { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+.track { height: 6px; background: var(--b0); border-radius: 999px; overflow: hidden; margin-top: 1rem; }
+.fill { height: 100%; border-radius: 999px; transition: width 1s cubic-bezier(0.25, 1, 0.5, 1); }
+.dash-card.ov .fill { background: var(--grad); }
+.dash-card.phy .fill { background: var(--phy); }
+.dash-card.che .fill { background: var(--che); }
+.dash-card.mat .fill { background: var(--mat); }
+
+/* ── SLEEK FILTER BAR ── */
+.fbar { padding: 0 0 2rem 0; position: relative; z-index: 10; }
+.fbar-wrap { background: var(--card); border: 1px solid var(--b1); border-radius: 20px; padding: 1.25rem; display: flex; flex-direction: column; gap: 1.25rem; box-shadow: 0 8px 32px rgba(0,0,0,0.02); }
+
+/* Level 1: Search */
+.srch-box { position: relative; width: 100%; }
+.srch-box svg { position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); color: var(--t3); pointer-events: none; width: 18px; height: 18px; }
+.srch { width: 100%; padding: 0.85rem 1rem 0.85rem 3rem; background: var(--elevated); border: 1px solid transparent; border-radius: 12px; color: var(--t1); font-size: 0.95rem; font-family: 'DM Sans', sans-serif; outline: none; transition: all var(--t); }
+.srch:focus { border-color: var(--amber-lo); background: var(--card); box-shadow: 0 0 0 3px var(--amber-lo); }
+.srch::placeholder { color: var(--t3); }
+
+/* Level 2: segmented controls */
+.f-row { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+.f-group { display: flex; align-items: center; gap: 1rem; }
+.f-label { font-size: 0.7rem; color: var(--t3); font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+
+.seg-ctrl { display: flex; background: var(--elevated); padding: 4px; border-radius: 12px; border: 1px solid var(--b0); }
+.seg-btn { background: transparent; border: none; color: var(--t2); padding: 0.5rem 1rem; font-size: 0.8rem; font-weight: 600; border-radius: 8px; cursor: pointer; transition: all 0.2s ease; font-family: 'DM Sans', sans-serif; }
+.seg-btn:hover { color: var(--t1); }
+.seg-btn.act { background: var(--card); color: var(--t1); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.seg-btn.act-s { color: var(--amber); }
+
+/* Level 3: Columns */
+.col-area { display: flex; align-items: center; gap: 1rem; border-top: 1px dashed var(--b1); padding-top: 1.25rem; }
+.col-list { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 4px; flex: 1; scrollbar-width: none; }
+.col-list::-webkit-scrollbar { display: none; }
+
+.col-item { position: relative; background: var(--elevated); border: 1px solid var(--b0); border-radius: 10px; display: flex; align-items: center; transition: all var(--t); }
+.col-item:focus-within { border-color: var(--amber); box-shadow: 0 0 0 2px var(--amber-lo); }
+.col-item input { width: 90px; background: transparent; border: none; padding: 0.5rem 1.75rem 0.5rem 0.75rem; color: var(--t1); font-size: 0.8rem; font-family: 'IBM Plex Mono', monospace; font-weight: 500; outline: none; }
+.col-rm { position: absolute; right: 4px; background: transparent; border: none; color: var(--t3); cursor: pointer; border-radius: 6px; padding: 4px; display: flex; opacity: 0; transition: all var(--t); }
+.col-item:hover .col-rm { opacity: 1; }
+.col-rm:hover { background: rgba(248,113,113,0.15); color: var(--err); }
+
+.col-add { background: transparent; border: 1px dashed var(--b2); color: var(--t2); border-radius: 10px; padding: 0 1rem; display: flex; align-items: center; gap: 0.4rem; cursor: pointer; font-size: 0.75rem; font-weight: 600; transition: all var(--t); white-space: nowrap; }
+.col-add:hover { border-color: var(--t1); color: var(--t1); background: var(--hover); }
+
+/* ── MAIN LIST ── */
+.main { padding-bottom: 5rem; }
+.done-banner { display: none; background: linear-gradient(135deg, rgba(245,158,11,0.1), rgba(239,68,68,0.05)); border: 1px solid rgba(245,158,11,0.2); border-radius: 20px; padding: 1.25rem; margin-bottom: 2rem; text-align: center; font-family: 'Sora', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--amber); }
+.done-banner.show { display: block; animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); }
+@keyframes popIn { 0% { transform: scale(0.95); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+/* Subject Blocks */
+.subj-block { margin-bottom: 3rem; }
+.subj-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+.subj-icon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 0.8rem; color: #fff; background: var(--card); border: 1px solid var(--b1); }
+.subj-icon.phy { color: var(--phy); border-color: var(--phy-lo); background: rgba(59,130,246,0.05); }
+.subj-icon.che { color: var(--che); border-color: var(--che-lo); background: rgba(16,185,129,0.05); }
+.subj-icon.mat { color: var(--mat); border-color: var(--mat-lo); background: rgba(139,92,246,0.05); }
+.subj-name { font-family: 'Sora', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--t1); letter-spacing: -0.01em; }
+
+/* Priorities */
+.pri-sec { margin-bottom: 2rem; }
+.pri-head { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; padding-left: 0.25rem; }
+.pri-pill { padding: 0.25rem 0.6rem; border-radius: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+.pri-pill.a { background: rgba(245,158,11,0.1); color: var(--pa); border: 1px solid rgba(245,158,11,0.2); }
+.pri-pill.b { background: rgba(59,130,246,0.1); color: var(--pb); border: 1px solid rgba(59,130,246,0.2); }
+.pri-pill.c { background: rgba(161,161,170,0.1); color: var(--pc); border: 1px solid rgba(161,161,170,0.2); }
+.pri-title { font-size: 1.05rem; font-weight: 600; color: var(--t2); }
+
+/* Table Redesign */
+.table-wrap { overflow-x: auto; background: var(--card); border: 1px solid var(--b1); border-radius: 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.02); }
+.table { min-width: 700px; }
+.th-row { display: grid; padding: 0.75rem 1.25rem; background: var(--elevated); border-bottom: 1px solid var(--b0); font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--t3); }
+.tr-row { border-bottom: 1px solid var(--b0); transition: all 0.2s ease; }
+.tr-row:last-child { border-bottom: none; }
+.tr-row:hover { background: var(--hover); }
+
+.tr-main { display: grid; align-items: center; padding: 1.1rem 1.25rem; gap: 1rem; }
+.ch-info { display: flex; align-items: flex-start; gap: 0.75rem; }
+.ch-name { font-size: 1rem; font-weight: 600; color: var(--t1); line-height: 1.3; }
+.ch-note { font-size: 0.8rem; color: var(--t3); margin-top: 0.25rem; font-weight: 400; }
+
+/* Trend Badge */
+.trend { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.35rem 0.65rem; border-radius: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; font-weight: 600; cursor: help; position: relative; }
+.trend.up { background: rgba(52,211,153,0.08); color: var(--ok); border: 1px solid rgba(52,211,153,0.15); }
+.trend.down { background: rgba(248,113,113,0.08); color: var(--err); border: 1px solid rgba(248,113,113,0.15); }
+.trend.stable { background: rgba(59,130,246,0.08); color: var(--pb); border: 1px solid rgba(59,130,246,0.15); }
+
+/* Elegant Checkbox */
+.chk-cell { display: flex; justify-content: center; align-items: center; }
+.chk { 
+  appearance: none; width: 26px; height: 26px; border: 2px solid var(--b2); border-radius: 8px; 
+  background: var(--elevated); cursor: pointer; display: grid; place-content: center; 
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); margin: 0; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+.chk:hover { border-color: var(--t3); transform: scale(1.05); }
+.chk::before { 
+  content: ''; width: 13px; height: 13px; transform: scale(0); 
+  transition: 0.3s transform cubic-bezier(0.34, 1.56, 0.64, 1); background: #fff; 
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%); 
+}
+.chk:checked { background: var(--amber); border-color: var(--amber); box-shadow: 0 4px 12px rgba(245,158,11,0.3); }
+.chk:checked::before { transform: scale(1); }
+
+/* Tools (Expander & Notes) */
+.tool-btn { background: transparent; border: none; color: var(--t3); padding: 4px; border-radius: 6px; cursor: pointer; transition: all var(--t); display: flex; }
+.tool-btn:hover { background: var(--elevated); color: var(--t1); }
+.tool-btn.active-note { color: var(--amber); }
+.tool-btn svg { transition: transform var(--t); width: 16px; height: 16px; }
+.tool-btn.open svg { transform: rotate(180deg); }
+
+.drawer { display: none; padding: 1rem 1.25rem 1.25rem 3.25rem; background: rgba(0,0,0,0.1); border-top: 1px solid var(--b0); }
+.drawer.open { display: block; animation: slideDown 0.3s ease; }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
+.sub-pill { display: inline-block; padding: 0.3rem 0.75rem; border-radius: 8px; font-size: 0.75rem; border: 1px solid var(--b1); color: var(--t2); background: var(--elevated); margin: 0 0.4rem 0.4rem 0; }
+.note-input { width: 100%; padding: 0.75rem 1rem; background: var(--elevated); border: 1px solid var(--b1); border-radius: 12px; color: var(--t1); font-size: 0.9rem; font-family: 'DM Sans', sans-serif; resize: vertical; min-height: 80px; outline: none; transition: all var(--t); margin-top: 0.5rem; }
+.note-input:focus { border-color: var(--amber); box-shadow: 0 0 0 2px var(--amber-lo); }
+
+/* Canvas Tooltip */
+.sp-wrap { position: absolute; bottom: calc(100% + 12px); left: 50%; transform: translateX(-50%) scale(0.95); background: var(--surface); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--b2); border-radius: 12px; padding: 0.75rem; width: 180px; z-index: 200; visibility: hidden; opacity: 0; transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); pointer-events: none; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+.trend:hover .sp-wrap { visibility: visible; opacity: 1; transform: translateX(-50%) scale(1); }
+.sp-label { font-size: 0.65rem; font-weight: 600; color: var(--t2); margin-bottom: 0.5rem; text-align: center; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; }
+
+/* Print */
+@media print { .nav, .fbar, .hero { display: none !important; } body { background: #fff; color: #000; } * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; } }
+
+/* Mobile */
+@media(max-width: 768px) {
+  .hero-title { font-size: 1.75rem; }
+  .dc-pct { font-size: 1.4rem; }
+  .f-row { gap: 1rem; flex-direction: column; align-items: flex-start; }
+  .seg-ctrl { width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav glass">
+  <div class="inner nav-inner">
+    <div class="nav-brand">
+      <div class="nav-logo">JEE</div>
+      <div>
+        <div class="nav-title">Priority Checklist</div>
+        <div class="nav-sub">Based on 2019–2025 Analysis</div>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <button class="btn-icon" onclick="window.print()" title="Save PDF">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      </button>
+      <button class="btn-icon" onclick="confirmReset()" title="Reset Progress">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><polyline points="3 3 3 8 8 8"/></svg>
+      </button>
+      <div class="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <div class="thumb"></div>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="inner">
+    <h1 class="hero-title">JEE Advanced 2026<br><span>Priority Tracker</span></h1>
+    <p class="hero-sub">Physics · Chemistry · Mathematics &nbsp;&nbsp;|&nbsp;&nbsp; <i>Level up your delulu.</i></p>
+    
+    <div class="dash-grid">
+      <div class="dash-card ov">
+        <div class="dc-head"><span class="dc-label">Overall Mastery</span></div>
+        <div class="dc-pct" id="ov-pct">0%</div>
+        <div class="track"><div class="fill" id="ov-fill" style="width:0%"></div></div>
+      </div>
+      <div class="dash-card phy">
+        <div class="dc-head"><span class="dc-label">Physics</span></div>
+        <div class="dc-pct" id="pct-phy">0%</div>
+        <div class="track"><div class="fill" id="fill-phy" style="width:0%"></div></div>
+      </div>
+      <div class="dash-card che">
+        <div class="dc-head"><span class="dc-label">Chemistry</span></div>
+        <div class="dc-pct" id="pct-che">0%</div>
+        <div class="track"><div class="fill" id="fill-che" style="width:0%"></div></div>
+      </div>
+      <div class="dash-card mat">
+        <div class="dc-head"><span class="dc-label">Mathematics</span></div>
+        <div class="dc-pct" id="pct-mat">0%</div>
+        <div class="track"><div class="fill" id="fill-mat" style="width:0%"></div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="fbar">
+  <div class="inner">
+    <div class="fbar-wrap">
+      <div class="srch-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="srch" id="srch" placeholder="Search for concepts, chapters..." oninput="applyFilters()">
+      </div>
+
+      <div class="f-row">
+        <div class="f-group">
+          <span class="f-label">Subject</span>
+          <div class="seg-ctrl" id="schips">
+            <button class="seg-btn act act-s" data-s="all" onclick="setSF('all',this)">All</button>
+            <button class="seg-btn" data-s="phy" onclick="setSF('phy',this)">Physics</button>
+            <button class="seg-btn" data-s="che" onclick="setSF('che',this)">Chemistry</button>
+            <button class="seg-btn" data-s="mat" onclick="setSF('mat',this)">Maths</button>
+          </div>
+        </div>
+        <div class="f-group">
+          <span class="f-label">Priority Tier</span>
+          <div class="seg-ctrl" id="pchips">
+            <button class="seg-btn act" data-p="all" onclick="setPF('all',this)">All Tiers</button>
+            <button class="seg-btn" data-p="a" onclick="setPF('a',this)">Priority A</button>
+            <button class="seg-btn" data-p="b" onclick="setPF('b',this)">Priority B</button>
+            <button class="seg-btn" data-p="c" onclick="setPF('c',this)">Priority C</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-area">
+        <span class="f-label">Columns:</span>
+        <div class="col-list" id="col-inputs"></div>
+        <button class="col-add" onclick="addCol()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add Field
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="main">
+  <div class="inner" id="main-list">
+    <div class="done-banner" id="done-banner">🎯 Unbelievable focus. You have mastered the entire syllabus.</div>
+    </div>
+</main>
+
+<script>
+// ═══════════════════════════ DATA ═══════════════════════════
+const DATA = {
+  "Physics": { slug:"phy", cc:"phy", priorities: {
+    A:{ label:"High-Yield & Rank Filters", chapters:[
+      {n:"Rotational Dynamics",       note:"10-12% | Rolling, Torque, MOI",          trend:[9,10,10,11,11,12,12], dir:"up",      sub:["Rolling & Collision","Torque & Angular Momentum","Moment of Inertia"]},
+      {n:"Heat & Thermodynamics",     note:"10-14% | Entropy, Carnot, KTG",          trend:[13,12,14,13,14,13,14], dir:"stable", sub:["1st Law & Processes","KTG & Speed Distribution","Calorimetry/Transfer"]},
+      {n:"Electrostatics",            note:"10-12.5% | Gauss's Law, conductors",     trend:[10,11,11,12,12,12,13], dir:"up",      sub:["Gauss's Law & Conductors","Potential & Field","Dipole"]},
+      {n:"Modern Physics",            note:"10-13.5% | High ROI, Bohr model",        trend:[8,9,10,12,13,13,14],  dir:"up",      sub:["Bohr Model & Transitions","Photoelectric Effect","Nucleus & Radioactivity"]},
+      {n:"Current Electricity",       note:"8-10% | Kirchhoff, asymmetric circuits", trend:[9,10,9,8,10,9,10],    dir:"stable", sub:["Kirchhoff's Laws & Circuits","Measuring Instruments"]}
+    ]},
+    B:{ label:"Steady Performers", chapters:[
+      {n:"Electromagnetic Induction", note:"6-9% | Faraday/Lenz laws, LCR",   trend:[6,7,8,8,9,8,9],    dir:"up",      sub:["Faraday's Law & Motional EMF","LR/LC Circuits","AC Circuits"]},
+      {n:"Center of Mass & Momentum", note:"6-7% | Complex 2D collisions",     trend:[7,7,6,7,6,7,6],    dir:"stable", sub:["2D Collisions","Variable Mass/COM Shift"]},
+      {n:"Fluid Mechanics",           note:"5-8% | Bernoulli, viscous drag",    trend:[5,6,5,7,8,7,8],    dir:"up",      sub:["Bernoulli & Continuity","Surface Tension & Viscosity"]},
+      {n:"Gravitation",               note:"5-8% | Kepler's laws, satellites",  trend:[8,7,8,6,5,6,5],    dir:"down",    sub:["Orbital Mechanics/Satellites","Field & Potential"]},
+      {n:"Geometrical & Wave Optics", note:"8-13% | YDSE variations, TIR",      trend:[12,13,11,10,9,8,8], dir:"down",  sub:["YDSE & Interference","Lenses & Mirrors","TIR & Prisms"]}
+    ]},
+    C:{ label:"Foundational / Embedded", chapters:[
+      {n:"Kinematics & Newton's Laws",note:"Foundational | Embedded",         trend:[4,3,4,3,2,3,2], dir:"down",    sub:["Relative Motion","Constrained Motion"]},
+      {n:"Friction & Work-Energy",    note:"Foundational anchor",             trend:[3,4,3,4,3,3,4], dir:"stable", sub:["Work-Energy Theorem","Multi-block Friction"]},
+      {n:"Simple Harmonic Motion",    note:"5-7% | Embedded with waves",    trend:[6,7,5,6,7,5,6], dir:"stable", sub:["Spring-Mass Systems","Energy in SHM"]},
+      {n:"String & Sound Waves",      note:"Doppler, standing waves",         trend:[5,4,5,4,3,4,3], dir:"down",    sub:["Doppler Effect","Standing Waves/Pipes"]}
+    ]}
+  }},
+  "Chemistry": { slug:"che", cc:"che", priorities: {
+    A:{ label:"Analytical Rigor & Heavy Weightage", chapters:[
+      {n:"Aldehydes, Ketones & Acids",note:"14-15% | Multi-step organic synthesis", trend:[12,13,14,14,15,14,15], dir:"up",    sub:["Aldol & Cannizzaro","Nucleophilic Addition","Acid Derivatives"]},
+      {n:"Chemical Thermodynamics",   note:"11-13% | Gibbs free energy, entropy",  trend:[11,12,11,13,12,13,13], dir:"up",    sub:["Gibbs Free Energy & Spontaneity","Thermochemistry","Entropy Changes"]},
+      {n:"p-Block Elements",          note:"8-22% | Massive scope, now declining", trend:[20,18,15,12,10,8,9],   dir:"down", sub:["Group 15-17 Anomalies","Oxoacids Structure","Noble Gases"]},
+      {n:"Coordination Compounds",    note:"9-11% | CFT, VBT, Isomerism",          trend:[8,9,10,10,11,11,12],  dir:"up",    sub:["Crystal Field Theory","Isomerism","Nomenclature/VBT"]},
+      {n:"Chemical & Ionic Eq.",      note:"6-11% | Highly calculative",           trend:[7,8,9,11,10,11,11],  dir:"up",    sub:["Buffer Solutions","Solubility Product (Ksp)","Le Chatelier"]}
+    ]},
+    B:{ label:"Crucial Linkages & Moderate Weight", chapters:[
+      {n:"GOC & Isomerism",           note:"Absolute prerequisite for organic",     trend:[5,6,5,7,6,6,7],  dir:"up",      sub:["Stereoisomerism","Electronic Effects","Aromaticity"]},
+      {n:"Electrochemistry",          note:"6-8% | Nernst equation, Faraday",       trend:[6,7,6,8,7,8,8],  dir:"up",      sub:["Nernst Equation","Conductance","Electrolysis"]},
+      {n:"Chemical Kinetics",         note:"6-8% | Arrhenius, steady-state",        trend:[8,7,8,6,7,6,7],  dir:"stable", sub:["Arrhenius Eq","First Order Reactions"]},
+      {n:"Chemical Bonding",          note:"6-10% | MOT, VSEPR backbone",           trend:[10,9,8,7,6,7,6], dir:"down",    sub:["Molecular Orbital Theory (MOT)","VSEPR/Hybridization"]},
+      {n:"Biomolecules & Polymers",   note:"3-6% | Integrated synthesis context",  trend:[3,4,4,5,6,5,6],  dir:"up",      sub:["Carbohydrates Structure","Amino Acids/Proteins"]}
+    ]},
+    C:{ label:"Foundational & Fact-Based", chapters:[
+      {n:"Amines & N-Compounds",      note:"Integrated with carbonyls",       trend:[4,5,4,5,4,5,4], dir:"stable", sub:["Diazonium Salts","Basicity of Amines"]},
+      {n:"Atomic Structure",          note:"Overlaps with Modern Physics",    trend:[5,4,3,4,3,4,3], dir:"down",    sub:["Quantum Numbers","Schrödinger Eq basics"]},
+      {n:"Mole Concept & Stoich",     note:"Embedded calculation base",       trend:[2,3,2,3,2,3,2], dir:"stable", sub:["Concentration Terms","Redox Titrations"]},
+      {n:"s-Block, H & Metallurgy",   note:"Factual recall, phasing out",   trend:[6,5,4,3,2,2,1], dir:"down",    sub:["Ellingham Diagram","Flame Tests"]},
+      {n:"Solid State & Solutions",   note:"Standard physical chemistry",     trend:[4,5,5,4,4,5,4], dir:"stable", sub:["Colligative Properties","Defects in Solids"]}
+    ]}
+  }},
+  "Mathematics": { slug:"mat", cc:"mat", priorities: {
+    A:{ label:"Apex — Spatial & Analytical Rigor", chapters:[
+      {n:"Definite Integration",      note:"11-16% | King's Rule, dominating", trend:[11,12,13,14,15,16,16], dir:"up",      sub:["Properties (King's Rule)","Limit of a Sum","Area bounding curves"]},
+      {n:"Application of Derivatives",note:"14-20% | Most tested topic",   trend:[14,16,15,18,17,19,20], dir:"up",      sub:["Maxima & Minima","Monotonicity/Rolle's","Tangents/Normals"]},
+      {n:"Vectors & 3D Geometry",     note:"10-21% | Massive recent growth",  trend:[10,12,15,18,20,21,20], dir:"up",      sub:["Planes & Lines Intersection","Vector Triple Product","Shortest Distance"]},
+      {n:"Probability",               note:"13-14% | Bayes', random variables",trend:[12,13,14,13,14,14,14], dir:"stable", sub:["Bayes' Theorem","Total Probability","Random Variables"]},
+      {n:"Matrices & Determinants",   note:"8-12% | Abstract properties",     trend:[12,11,10,9,8,9,8],    dir:"down",    sub:["System of Equations","Adjoint/Inverse Properties"]}
+    ]},
+    B:{ label:"Rank Deciders & Steady Averages", chapters:[
+      {n:"Conic Sections",            note:"11-15% | Parabola, Ellipse, Hyperbola", trend:[15,14,13,12,11,12,11], dir:"down", sub:["Tangents/Normals Properties","Common Tangents","Director Circles"]},
+      {n:"Complex Numbers",           note:"6-9% | Argand plane geometry",         trend:[9,8,9,7,6,7,6],     dir:"down",    sub:["Geometry in Argand Plane","Cube Roots of Unity"]},
+      {n:"Permutations & Combos",     note:"Logical foundation, stable",            trend:[6,7,6,7,6,7,6],     dir:"stable", sub:["Derangements","Grouping/Distribution"]},
+      {n:"Differential Equations",    note:"Paired with integration, rising",       trend:[5,6,7,8,7,8,9],     dir:"up",     sub:["Linear Diff Equations","Variable Separable/Homogeneous"]},
+      {n:"Circles",                   note:"Tied heavily into conics",              trend:[7,6,5,4,5,4,5],     dir:"down",    sub:["Family of Circles","Orthogonal Intersection"]}
+    ]},
+    C:{ label:"Embedded Concepts", chapters:[
+      {n:"Functions & Limits",        note:"Core calculus prerequisite",        trend:[4,5,4,5,4,5,4], dir:"stable", sub:["L'Hôpital & Expansions","Continuity over Intervals"]},
+      {n:"Sequence and Series",       note:"Frequently embedded",               trend:[5,4,5,4,3,4,3], dir:"down",    sub:["AM-GM-HM Inequality","Telescopic Series"]},
+      {n:"Straight Lines",            note:"Foundational, very low direct Qs", trend:[3,2,3,2,1,2,1], dir:"down",    sub:["Distance Between Lines","Family of Lines"]},
+      {n:"Trigonometry (ITF, SOT)",   note:"5-7% | Blended with other topics", trend:[7,6,5,5,6,5,6], dir:"stable", sub:["ITF Properties","Solving Trig Equations"]}
+    ]}
+  }}
+};
+
+// ═══════════════════════════ STATE ═══════════════════════════
+let cols  = JSON.parse(localStorage.getItem('jee26_cols'))  || ["Theory","PYQs","Mock Test"];
+let state = JSON.parse(localStorage.getItem('jee26_state')) || {};
+let notes = JSON.parse(localStorage.getItem('jee26_notes')) || {};
+let theme = localStorage.getItem('jee26_theme') || 'dark';
+let pf = 'all', sf = 'all';
+
+document.documentElement.setAttribute('data-theme', theme);
+
+const save = () => {
+  localStorage.setItem('jee26_state', JSON.stringify(state));
+  localStorage.setItem('jee26_notes', JSON.stringify(notes));
+  localStorage.setItem('jee26_cols',  JSON.stringify(cols));
+};
+
+// ═══════════════════════════ THEME ═══════════════════════════
+function toggleTheme() {
+  theme = theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('jee26_theme', theme);
+}
+
+// ═══════════════════════════ COLUMNS ═════════════════════════
+function addCol() {
+  cols.push(`Field ${cols.length + 1}`);
+  save(); renderColInputs(); renderMain();
+}
+
+function removeCol(index) {
+  if (cols.length <= 1) { alert("You need at least one tracking field!"); return; }
+  if (!confirm(`Remove field "${cols[index]}"?`)) return;
+  
+  const newState = {};
+  Object.keys(state).forEach(key => {
+    const parts = key.split('-');
+    if (parts.length === 4) {
+      let colIdx = parseInt(parts[3]);
+      if (colIdx === index) return;
+      if (colIdx > index) {
+        parts[3] = (colIdx - 1).toString();
+        newState[parts.join('-')] = state[key];
+      } else { newState[key] = state[key]; }
+    } else { newState[key] = state[key]; }
+  });
+  
+  state = newState; cols.splice(index, 1);
+  save(); render();
+}
+
+function renderColInputs() {
+  const wrap = document.getElementById('col-inputs');
+  wrap.innerHTML = '';
+  cols.forEach((c, i) => {
+    const div = document.createElement('div');
+    div.className = 'col-item';
+    
+    const inp = document.createElement('input');
+    inp.type = 'text'; inp.value = c;
+    inp.onchange = e => { cols[i] = e.target.value || `Field ${i+1}`; save(); renderMain(); };
+    
+    const rmBtn = document.createElement('button');
+    rmBtn.className = 'col-rm';
+    rmBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+    rmBtn.onclick = () => removeCol(i);
+    
+    div.appendChild(inp); div.appendChild(rmBtn); wrap.appendChild(div);
+  });
+}
+
+// ═══════════════════════════ RENDER ══════════════════════════
+function render() { renderColInputs(); renderMain(); updateProgress(); }
+
+function renderMain() {
+  const inner = document.getElementById('main-list');
+  const banner = document.getElementById('done-banner');
+  Array.from(inner.children).forEach(child => { if (child.id !== 'done-banner') inner.removeChild(child); });
+
+  Object.entries(DATA).forEach(([subName, sub]) => {
+    const block = document.createElement('div');
+    block.className = 'subj-block'; block.dataset.subj = sub.slug;
+
+    block.innerHTML = `
+      <div class="subj-head">
+        <div class="subj-icon ${sub.cc}">${sub.slug.toUpperCase()}</div>
+        <div class="subj-name">${subName}</div>
+      </div>`;
+
+    Object.entries(sub.priorities).forEach(([pk, pd]) => {
+      const sec = document.createElement('div');
+      sec.className = 'pri-sec'; sec.dataset.pri = pk.toLowerCase();
+      const pl = pk.toLowerCase();
+
+      sec.innerHTML = `
+        <div class="pri-head">
+          <span class="pri-pill ${pl}">Tier ${pk}</span>
+          <span class="pri-title">${pd.label}</span>
+        </div>`;
+
+      const tableWrap = document.createElement('div');
+      tableWrap.className = 'table-wrap';
+      
+      const table = document.createElement('div'); 
+      table.className = 'table';
+      
+      const colW = cols.map(() => '80px').join(' ');
+      const gridT = `1fr 120px ${colW} 80px`;
+
+      const head = document.createElement('div'); head.className = 'th-row';
+      head.style.gridTemplateColumns = gridT;
+      head.innerHTML = `<span>Topic & Focus</span><span style="text-align:center">Yield Trend</span>${cols.map(c=>`<span style="text-align:center">${c}</span>`).join('')}<span style="text-align:center">Tools</span>`;
+      table.appendChild(head);
+
+      pd.chapters.forEach((ch, ci) => {
+        const rk = `${sub.slug}-${pl}-${ci}`;
+        const row = document.createElement('div');
+        row.className = 'tr-row'; row.dataset.ch = ch.n.toLowerCase();
+
+        const tCls = ch.dir==='up'?'up':ch.dir==='down'?'down':'stable';
+        const tSym = ch.dir==='up'?'↗':ch.dir==='down'?'↘':'→';
+        const cid = `sp-${rk}`;
+        const hasNote = !!(notes[rk] && notes[rk].trim());
+
+        const chkCells = cols.map((c, ci2) => {
+          const ck = `${rk}-${ci2}`;
+          return `<div class="chk-cell"><input type="checkbox" class="chk" data-key="${ck}" ${state[ck]?'checked':''} onchange="handleCheck('${ck}',this.checked)"></div>`;
+        }).join('');
+
+        const mainRow = document.createElement('div');
+        mainRow.className = 'tr-main'; mainRow.style.gridTemplateColumns = gridT;
+        mainRow.innerHTML = `
+          <div class="ch-info">
+            <div><div class="ch-name">${ch.n}</div><div class="ch-note">${ch.note}</div></div>
+          </div>
+          <div style="display:flex;justify-content:center;">
+            <div class="trend ${tCls}">
+              ${tSym} ${ch.dir==='up'?'Rising':ch.dir==='down'?'Fading':'Stable'}
+              <div class="sp-wrap">
+                <div class="sp-label">2019 → 2025 Weight</div>
+                <canvas id="${cid}" class="sp-canvas" width="150" height="40" data-trend="[${ch.trend}]" data-dir="${ch.dir}"></canvas>
+              </div>
+            </div>
+          </div>
+          ${chkCells}
+          <div style="display:flex;justify-content:center;gap:6px;">
+            <button class="tool-btn ${hasNote?'active-note':''}" id="nbtn-${rk}" onclick="toggleDrawer('${rk}', 'note')" title="Notes">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </button>
+            <button class="tool-btn" id="ebtn-${rk}" onclick="toggleDrawer('${rk}', 'sub')" title="Sub-topics">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+          </div>
+        `;
+        row.appendChild(mainRow);
+
+        const drawer = document.createElement('div'); drawer.className = 'drawer'; drawer.id = `drw-${rk}`;
+        
+        const subWrap = document.createElement('div'); subWrap.id = `drw-sub-${rk}`; subWrap.style.display = 'none';
+        ch.sub.forEach(s => { const p = document.createElement('span'); p.className='sub-pill'; p.textContent=s; subWrap.appendChild(p); });
+        
+        const noteWrap = document.createElement('div'); noteWrap.id = `drw-note-${rk}`; noteWrap.style.display = 'none';
+        const ta = document.createElement('textarea'); ta.className = 'note-input';
+        ta.placeholder = 'Add weak points, tricky formulae, or review notes here...'; ta.value = notes[rk] || '';
+        ta.oninput = () => {
+          notes[rk] = ta.value; save();
+          const nb = document.getElementById(`nbtn-${rk}`);
+          if (nb) nb.className = `tool-btn ${ta.value.trim()?'active-note':''}`;
+        };
+        noteWrap.appendChild(ta);
+
+        drawer.appendChild(subWrap); drawer.appendChild(noteWrap);
+        row.appendChild(drawer); table.appendChild(row);
+      });
+
+      tableWrap.appendChild(table); sec.appendChild(tableWrap); block.appendChild(sec);
+    });
+    inner.appendChild(block);
+  });
+
+  applyFilters(); updateProgress(); drawSparklines();
+}
+
+// ═════════════════════ INTERACTIONS ══════════════════════════
+function toggleDrawer(rk, type) {
+  const drw = document.getElementById(`drw-${rk}`);
+  const sub = document.getElementById(`drw-sub-${rk}`);
+  const note = document.getElementById(`drw-note-${rk}`);
+  const ebtn = document.getElementById(`ebtn-${rk}`);
+  
+  if (type === 'sub') {
+    if (drw.classList.contains('open') && sub.style.display === 'block') {
+      drw.classList.remove('open'); setTimeout(() => { sub.style.display = 'none'; }, 300);
+      ebtn.classList.remove('open');
+    } else {
+      sub.style.display = 'block'; note.style.display = 'none'; drw.classList.add('open');
+      ebtn.classList.add('open');
+    }
+  } else {
+    if (drw.classList.contains('open') && note.style.display === 'block') {
+      drw.classList.remove('open'); setTimeout(() => { note.style.display = 'none'; }, 300);
+    } else {
+      note.style.display = 'block'; sub.style.display = 'none'; drw.classList.add('open');
+      ebtn.classList.remove('open');
+      note.querySelector('textarea').focus();
+    }
+  }
+}
+
+function handleCheck(key, checked) { state[key] = checked; save(); updateProgress(); }
+
+// ═══════════════════════ FILTERS ═════════════════════════════
+function setPF(val, btn) {
+  pf = val;
+  document.querySelectorAll('#pchips .seg-btn').forEach(b => b.classList.remove('act'));
+  btn.classList.add('act'); applyFilters();
+}
+function setSF(val, btn) {
+  sf = val;
+  document.querySelectorAll('#schips .seg-btn').forEach(b => {
+    b.classList.remove('act'); b.classList.remove('act-s');
+  });
+  btn.classList.add('act'); btn.classList.add('act-s'); applyFilters();
+}
+function applyFilters() {
+  const q = document.getElementById('srch').value.toLowerCase().trim();
+  document.querySelectorAll('.subj-block').forEach(block => {
+    const showSubj = sf === 'all' || sf === block.dataset.subj;
+    let hasVis = false;
+    block.querySelectorAll('.pri-sec').forEach(sec => {
+      const showPri = pf === 'all' || pf === sec.dataset.pri;
+      let hasRow = false;
+      sec.querySelectorAll('.tr-row').forEach(row => {
+        const show = !q || (row.dataset.ch||'').includes(q);
+        row.style.display = (showSubj && showPri && show) ? '' : 'none';
+        if (show) hasRow = true;
+      });
+      sec.style.display = (showSubj && showPri && hasRow) ? '' : 'none';
+      if (showPri && hasRow) hasVis = true;
+    });
+    block.style.display = (showSubj && hasVis) ? '' : 'none';
+  });
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key==='/' && !['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) { e.preventDefault(); document.getElementById('srch').focus(); }
+  if (e.key==='Escape') { document.getElementById('srch').value=''; applyFilters(); }
+});
+
+// ══════════════════════ PROGRESS ═════════════════════════════
+function updateProgress() {
+  const totals = { phy:{t:0,d:0}, che:{t:0,d:0}, mat:{t:0,d:0} };
+  Object.values(DATA).forEach(sub => {
+    Object.entries(sub.priorities).forEach(([pk, pd]) => {
+      pd.chapters.forEach((ch, ci) => {
+        cols.forEach((c, ci2) => {
+          const key = `${sub.slug}-${pk.toLowerCase()}-${ci}-${ci2}`;
+          totals[sub.slug].t++; if (state[key]) totals[sub.slug].d++;
+        });
+      });
+    });
+  });
+
+  let allT = 0, allD = 0;
+  Object.entries(totals).forEach(([slug, s]) => {
+    const pct = s.t ? Math.round(s.d / s.t * 100) : 0;
+    document.getElementById(`pct-${slug}`).textContent = `${pct}%`;
+    document.getElementById(`fill-${slug}`).style.width = `${pct}%`;
+    allT += s.t; allD += s.d;
+  });
+
+  const op = allT ? Math.round(allD / allT * 100) : 0;
+  document.getElementById('ov-pct').textContent = `${op}%`;
+  document.getElementById('ov-fill').style.width = `${op}%`;
+
+  const banner = document.getElementById('done-banner');
+  if (op === 100 && allT > 0) { banner.classList.add('show'); fireConfetti(); }
+  else banner.classList.remove('show');
+}
+
+// ═════════════════════ SPARKLINES ════════════════════════════
+function drawSparklines() {
+  document.querySelectorAll('.sp-canvas').forEach(cv => {
+    const ctx = cv.getContext('2d');
+    const data = JSON.parse(cv.dataset.trend || '[]');
+    if (!data.length) return;
+    const w = cv.width, h = cv.height;
+    ctx.clearRect(0, 0, w, h);
+    const mn = Math.min(...data) - 0.5, mx = Math.max(...data) + 0.5;
+    const rng = mx - mn || 1; const sx = w / (data.length - 1);
+    const col = cv.dataset.dir==='up'?'#34d399':cv.dataset.dir==='down'?'#f87171':'#3b82f6';
+    const pts = data.map((v, i) => [i * sx, h - ((v - mn) / rng) * (h - 8) - 4]);
+
+    ctx.beginPath(); pts.forEach(([x,y],i) => i===0?ctx.moveTo(x,y):ctx.lineTo(x,y));
+    ctx.lineTo(pts[pts.length-1][0], h); ctx.lineTo(0, h); ctx.closePath();
+    ctx.fillStyle = col + '20'; ctx.fill();
+
+    ctx.beginPath(); pts.forEach(([x,y],i) => i===0?ctx.moveTo(x,y):ctx.lineTo(x,y));
+    ctx.strokeStyle = col; ctx.lineWidth = 2.5; ctx.lineJoin = 'round'; ctx.stroke();
+
+    [pts[0], pts[pts.length-1]].forEach(([x,y]) => {
+      ctx.beginPath(); ctx.arc(x, y, 3.5, 0, Math.PI*2); ctx.fillStyle = col; ctx.fill();
+    });
+  });
+}
+
+function confirmReset() {
+  if (confirm('Erase all checklist progress? Your notes will be saved. This cannot be undone.')) {
+    state = {}; save(); renderMain();
+  }
+}
+
+// ═════════════════════ CONFETTI ══════════════════════════════
+let confettiAnimating = false;
+function fireConfetti() {
+  if (confettiAnimating) return; confettiAnimating = true;
+  const cv = document.getElementById('confetti'); const ctx = cv.getContext('2d');
+  cv.width = window.innerWidth; cv.height = window.innerHeight;
+  const P = Array.from({length: 120}, () => ({
+    x: Math.random() * cv.width, y: -20,
+    vx: (Math.random() - 0.5) * 6, vy: Math.random() * 4 + 2,
+    color: ['#f59e0b','#ef4444','#3b82f6','#10b981','#8b5cf6'][Math.floor(Math.random()*5)],
+    size: Math.random() * 10 + 5, rot: Math.random() * 360, rv: (Math.random() - 0.5) * 8
+  }));
+  let frame = 0;
+  const draw = () => {
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    P.forEach(p => {
+      p.x += p.vx; p.y += p.vy * (1 + frame * 0.002); p.rot += p.rv;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot * Math.PI / 180);
+      ctx.fillStyle = p.color; ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
+      ctx.restore();
+    });
+    if (frame++ < 250) requestAnimationFrame(draw);
+    else { ctx.clearRect(0, 0, cv.width, cv.height); confettiAnimating = false; }
+  }; draw();
+}
+
+document.addEventListener('DOMContentLoaded', render);
+</script>
+</body>
+</html>
