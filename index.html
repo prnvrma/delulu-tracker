@@ -185,8 +185,9 @@ body{
 .subj-name { font-family: 'Sora', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--t1); letter-spacing: -0.01em; }
 
 /* Priorities */
-.pri-sec { margin-bottom: 2rem; }
-.pri-head { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; padding-left: 0.25rem; }
+.pri-sec { margin-bottom: 0; }
+.pri-sec + .pri-sec { border-top: 1px dotted var(--b2); }
+.pri-head { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; padding-left: 0.25rem; margin-top: 1.5rem; }
 .pri-pill { padding: 0.25rem 0.6rem; border-radius: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
 .pri-pill.a { background: rgba(245,158,11,0.1); color: var(--pa); border: 1px solid rgba(245,158,11,0.2); }
 .pri-pill.b { background: rgba(59,130,246,0.1); color: var(--pb); border: 1px solid rgba(59,130,246,0.2); }
@@ -194,7 +195,8 @@ body{
 .pri-title { font-size: 1.05rem; font-weight: 600; color: var(--t2); }
 
 /* STRICT ALIGNMENT TABLE */
-.table-wrap { overflow-x: auto; background: var(--card); border: 1px solid var(--b1); border-radius: 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.02); }
+.subj-content { border: 1px solid var(--b1); border-radius: 20px; background: var(--card); overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.02); padding-bottom: 0.5rem; }
+.table-wrap { overflow-x: auto; background: transparent; border: none; border-radius: 0; box-shadow: none; margin-bottom: 0; }
 .table { min-width: 800px; }
 
 /* Explicit Grid Alignments */
@@ -213,7 +215,7 @@ body{
 .th-row > span { text-align: center; display: flex; align-items: center; justify-content: center; }
 .th-row > span:first-child { text-align: left; justify-content: flex-start; }
 
-.tr-row { border-bottom: 1px solid var(--b0); transition: all 0.2s ease; }
+.tr-row { border-bottom: 1px dotted var(--b2); transition: all 0.2s ease; }
 .tr-row:last-child { border-bottom: none; }
 .tr-row:hover { background: var(--hover); }
 .tr-main { display: grid; align-items: center; padding: 1.1rem 1.25rem; gap: 0; }
@@ -383,73 +385,73 @@ body{
 </main>
 
 <script>
-// ═══════════════════════════ DATA ═══════════════════════════
+// ═══════════════════════════ RESTORED PERCENTAGE DATA ═══════════════════════════
 const DATA = {
   "Physics": { slug:"phy", cc:"phy", priorities: {
     A:{ label:"High-Yield & Rank Filters", chapters:[
-      {n:"Rotational Dynamics",       note:"10-12% | Rolling, Torque, MOI",          trend:[9,10,10,11,11,12,12], dir:"up",      sub:["Rolling & Collision","Torque & Angular Momentum","Moment of Inertia"]},
-      {n:"Heat & Thermodynamics",     note:"10-14% | Entropy, Carnot, KTG",          trend:[13,12,14,13,14,13,14], dir:"stable", sub:["1st Law & Processes","KTG & Speed Distribution","Calorimetry/Transfer"]},
-      {n:"Electrostatics",            note:"10-12.5% | Gauss's Law, conductors",     trend:[10,11,11,12,12,12,13], dir:"up",      sub:["Gauss's Law & Conductors","Potential & Field","Dipole"]},
-      {n:"Modern Physics",            note:"10-13.5% | High ROI, Bohr model",        trend:[8,9,10,12,13,13,14],  dir:"up",      sub:["Bohr Model & Transitions","Photoelectric Effect","Nucleus & Radioactivity"]},
-      {n:"Current Electricity",       note:"8-10% | Kirchhoff, asymmetric circuits", trend:[9,10,9,8,10,9,10],    dir:"stable", sub:["Kirchhoff's Laws & Circuits","Measuring Instruments"]}
+      {n:"Rotational Dynamics",       note:"10-12% | Rolling, Torque, MOI",          trend:[9,10,10,11,11,12,12], dir:"up",      sub:["Rolling & Collision: 5%","Torque & Angular Momentum: 4%","Moment of Inertia: 3%"]},
+      {n:"Heat & Thermodynamics",     note:"10-14% | Entropy, Carnot, KTG",          trend:[13,12,14,13,14,13,14], dir:"stable", sub:["1st Law & Processes: 6%","KTG & Speed Distribution: 4%","Calorimetry/Transfer: 3%"]},
+      {n:"Electrostatics",            note:"10-12.5% | Gauss's Law, conductors",     trend:[10,11,11,12,12,12,13], dir:"up",      sub:["Gauss's Law & Conductors: 6%","Potential & Field: 4%","Dipole: 2%"]},
+      {n:"Modern Physics",            note:"10-13.5% | High ROI, Bohr model",        trend:[8,9,10,12,13,13,14],  dir:"up",      sub:["Bohr Model & Transitions: 5%","Photoelectric Effect: 4%","Nucleus & Radioactivity: 4%"]},
+      {n:"Current Electricity",       note:"8-10% | Kirchhoff, asymmetric circuits", trend:[9,10,9,8,10,9,10],    dir:"stable", sub:["Kirchhoff's Laws & Circuits: 6%","Measuring Instruments: 3%"]}
     ]},
     B:{ label:"Steady Performers", chapters:[
-      {n:"Electromagnetic Induction", note:"6-9% | Faraday/Lenz laws, LCR",   trend:[6,7,8,8,9,8,9],    dir:"up",      sub:["Faraday's Law & Motional EMF","LR/LC Circuits","AC Circuits"]},
-      {n:"Center of Mass & Momentum", note:"6-7% | Complex 2D collisions",     trend:[7,7,6,7,6,7,6],    dir:"stable", sub:["2D Collisions","Variable Mass/COM Shift"]},
-      {n:"Fluid Mechanics",           note:"5-8% | Bernoulli, viscous drag",    trend:[5,6,5,7,8,7,8],    dir:"up",      sub:["Bernoulli & Continuity","Surface Tension & Viscosity"]},
-      {n:"Gravitation",               note:"5-8% | Kepler's laws, satellites",  trend:[8,7,8,6,5,6,5],    dir:"down",    sub:["Orbital Mechanics/Satellites","Field & Potential"]},
-      {n:"Geometrical & Wave Optics", note:"8-13% | YDSE variations, TIR",      trend:[12,13,11,10,9,8,8], dir:"down",  sub:["YDSE & Interference","Lenses & Mirrors","TIR & Prisms"]}
+      {n:"Electromagnetic Induction", note:"6-9% | Faraday/Lenz laws, LCR",   trend:[6,7,8,8,9,8,9],    dir:"up",      sub:["Faraday's Law & Motional EMF: 5%","LR/LC Circuits: 2%","AC Circuits: 2%"]},
+      {n:"Center of Mass & Momentum", note:"6-7% | Complex 2D collisions",     trend:[7,7,6,7,6,7,6],    dir:"stable", sub:["2D Collisions: 4%","Variable Mass/COM Shift: 3%"]},
+      {n:"Fluid Mechanics",           note:"5-8% | Bernoulli, viscous drag",    trend:[5,6,5,7,8,7,8],    dir:"up",      sub:["Bernoulli & Continuity: 4%","Surface Tension & Viscosity: 3%"]},
+      {n:"Gravitation",               note:"5-8% | Kepler's laws, satellites",  trend:[8,7,8,6,5,6,5],    dir:"down",    sub:["Orbital Mechanics/Satellites: 4%","Field & Potential: 2%"]},
+      {n:"Geometrical & Wave Optics", note:"8-13% | YDSE variations, TIR",      trend:[12,13,11,10,9,8,8], dir:"down",  sub:["YDSE & Interference: 5%","Lenses & Mirrors: 4%","TIR & Prisms: 2%"]}
     ]},
     C:{ label:"Foundational / Embedded", chapters:[
-      {n:"Kinematics & Newton's Laws",note:"Foundational | Embedded",         trend:[4,3,4,3,2,3,2], dir:"down",    sub:["Relative Motion","Constrained Motion"]},
-      {n:"Friction & Work-Energy",    note:"Foundational anchor",             trend:[3,4,3,4,3,3,4], dir:"stable", sub:["Work-Energy Theorem","Multi-block Friction"]},
-      {n:"Simple Harmonic Motion",    note:"5-7% | Embedded with waves",    trend:[6,7,5,6,7,5,6], dir:"stable", sub:["Spring-Mass Systems","Energy in SHM"]},
-      {n:"String & Sound Waves",      note:"Doppler, standing waves",         trend:[5,4,5,4,3,4,3], dir:"down",    sub:["Doppler Effect","Standing Waves/Pipes"]}
+      {n:"Kinematics & Newton's Laws",note:"Foundational | Embedded",         trend:[4,3,4,3,2,3,2], dir:"down",    sub:["Relative Motion: 2%","Constrained Motion: 1%"]},
+      {n:"Friction & Work-Energy",    note:"Foundational anchor",             trend:[3,4,3,4,3,3,4], dir:"stable", sub:["Work-Energy Theorem: 2%","Multi-block Friction: 1.5%"]},
+      {n:"Simple Harmonic Motion",    note:"5-7% | Embedded with waves",    trend:[6,7,5,6,7,5,6], dir:"stable", sub:["Spring-Mass Systems: 3%","Energy in SHM: 2%"]},
+      {n:"String & Sound Waves",      note:"Doppler, standing waves",         trend:[5,4,5,4,3,4,3], dir:"down",    sub:["Doppler Effect: 2.5%","Standing Waves/Pipes: 2%"]}
     ]}
   }},
   "Chemistry": { slug:"che", cc:"che", priorities: {
     A:{ label:"Analytical Rigor & Heavy Weightage", chapters:[
-      {n:"Aldehydes, Ketones & Acids",note:"14-15% | Multi-step organic synthesis", trend:[12,13,14,14,15,14,15], dir:"up",    sub:["Aldol & Cannizzaro","Nucleophilic Addition","Acid Derivatives"]},
-      {n:"Chemical Thermodynamics",   note:"11-13% | Gibbs free energy, entropy",  trend:[11,12,11,13,12,13,13], dir:"up",    sub:["Gibbs Free Energy & Spontaneity","Thermochemistry","Entropy Changes"]},
-      {n:"p-Block Elements",          note:"8-22% | Massive scope, now declining", trend:[20,18,15,12,10,8,9],   dir:"down", sub:["Group 15-17 Anomalies","Oxoacids Structure","Noble Gases"]},
-      {n:"Coordination Compounds",    note:"9-11% | CFT, VBT, Isomerism",          trend:[8,9,10,10,11,11,12],  dir:"up",    sub:["Crystal Field Theory","Isomerism","Nomenclature/VBT"]},
-      {n:"Chemical & Ionic Eq.",      note:"6-11% | Highly calculative",           trend:[7,8,9,11,10,11,11],  dir:"up",    sub:["Buffer Solutions","Solubility Product (Ksp)","Le Chatelier"]}
+      {n:"Aldehydes, Ketones & Acids",note:"14-15% | Multi-step organic synthesis", trend:[12,13,14,14,15,14,15], dir:"up",    sub:["Aldol & Cannizzaro: 6%","Nucleophilic Addition: 5%","Acid Derivatives: 4%"]},
+      {n:"Chemical Thermodynamics",   note:"11-13% | Gibbs free energy, entropy",  trend:[11,12,11,13,12,13,13], dir:"up",    sub:["Gibbs Free Energy & Spontaneity: 5%","Thermochemistry: 4%","Entropy Changes: 3%"]},
+      {n:"p-Block Elements",          note:"8-22% | Massive scope, now declining", trend:[20,18,15,12,10,8,9],   dir:"down", sub:["Group 15-17 Anomalies: 4%","Oxoacids Structure: 3%","Noble Gases: 2%"]},
+      {n:"Coordination Compounds",    note:"9-11% | CFT, VBT, Isomerism",          trend:[8,9,10,10,11,11,12],  dir:"up",    sub:["Crystal Field Theory: 5%","Isomerism: 4%","Nomenclature/VBT: 2%"]},
+      {n:"Chemical & Ionic Eq.",      note:"6-11% | Highly calculative",           trend:[7,8,9,11,10,11,11],  dir:"up",    sub:["Buffer Solutions: 4%","Solubility Product (Ksp): 3.5%","Le Chatelier: 2.5%"]}
     ]},
     B:{ label:"Crucial Linkages & Moderate Weight", chapters:[
-      {n:"GOC & Isomerism",           note:"Absolute prerequisite for organic",     trend:[5,6,5,7,6,6,7],  dir:"up",      sub:["Stereoisomerism","Electronic Effects","Aromaticity"]},
-      {n:"Electrochemistry",          note:"6-8% | Nernst equation, Faraday",       trend:[6,7,6,8,7,8,8],  dir:"up",      sub:["Nernst Equation","Conductance","Electrolysis"]},
-      {n:"Chemical Kinetics",         note:"6-8% | Arrhenius, steady-state",        trend:[8,7,8,6,7,6,7],  dir:"stable", sub:["Arrhenius Eq","First Order Reactions"]},
-      {n:"Chemical Bonding",          note:"6-10% | MOT, VSEPR backbone",           trend:[10,9,8,7,6,7,6], dir:"down",    sub:["Molecular Orbital Theory (MOT)","VSEPR/Hybridization"]},
-      {n:"Biomolecules & Polymers",   note:"3-6% | Integrated synthesis context",  trend:[3,4,4,5,6,5,6],  dir:"up",      sub:["Carbohydrates Structure","Amino Acids/Proteins"]}
+      {n:"GOC & Isomerism",           note:"Absolute prerequisite for organic",     trend:[5,6,5,7,6,6,7],  dir:"up",      sub:["Stereoisomerism: 3%","Electronic Effects: 2%","Aromaticity: 1.5%"]},
+      {n:"Electrochemistry",          note:"6-8% | Nernst equation, Faraday",       trend:[6,7,6,8,7,8,8],  dir:"up",      sub:["Nernst Equation: 4%","Conductance: 2%","Electrolysis: 1.5%"]},
+      {n:"Chemical Kinetics",         note:"6-8% | Arrhenius, steady-state",        trend:[8,7,8,6,7,6,7],  dir:"stable", sub:["Arrhenius Eq (Temp dependence): 3%","First Order Reactions: 3%"]},
+      {n:"Chemical Bonding",          note:"6-10% | MOT, VSEPR backbone",           trend:[10,9,8,7,6,7,6], dir:"down",    sub:["Molecular Orbital Theory (MOT): 4%","VSEPR/Hybridization: 3%"]},
+      {n:"Biomolecules & Polymers",   note:"3-6% | Integrated synthesis context",  trend:[3,4,4,5,6,5,6],  dir:"up",      sub:["Carbohydrates Structure: 3%","Amino Acids/Proteins: 2%"]}
     ]},
     C:{ label:"Foundational & Fact-Based", chapters:[
-      {n:"Amines & N-Compounds",      note:"Integrated with carbonyls",       trend:[4,5,4,5,4,5,4], dir:"stable", sub:["Diazonium Salts","Basicity of Amines"]},
-      {n:"Atomic Structure",          note:"Overlaps with Modern Physics",    trend:[5,4,3,4,3,4,3], dir:"down",    sub:["Quantum Numbers","Schrödinger Eq basics"]},
-      {n:"Mole Concept & Stoich",     note:"Embedded calculation base",       trend:[2,3,2,3,2,3,2], dir:"stable", sub:["Concentration Terms","Redox Titrations"]},
-      {n:"s-Block, H & Metallurgy",   note:"Factual recall, phasing out",   trend:[6,5,4,3,2,2,1], dir:"down",    sub:["Ellingham Diagram","Flame Tests"]},
-      {n:"Solid State & Solutions",   note:"Standard physical chemistry",     trend:[4,5,5,4,4,5,4], dir:"stable", sub:["Colligative Properties","Defects in Solids"]}
+      {n:"Amines & N-Compounds",      note:"Integrated with carbonyls",       trend:[4,5,4,5,4,5,4], dir:"stable", sub:["Diazonium Salts: 2%","Basicity of Amines: 2%"]},
+      {n:"Atomic Structure",          note:"Overlaps with Modern Physics",    trend:[5,4,3,4,3,4,3], dir:"down",    sub:["Quantum Numbers: 1.5%","Schrödinger Eq basics: 1.5%"]},
+      {n:"Mole Concept & Stoich",     note:"Embedded calculation base",       trend:[2,3,2,3,2,3,2], dir:"stable", sub:["Concentration Terms: 1.5%","Redox Titrations: 1%"]},
+      {n:"s-Block, H & Metallurgy",   note:"Factual recall, phasing out",   trend:[6,5,4,3,2,2,1], dir:"down",    sub:["Ellingham Diagram: 0.5%","Flame Tests: 0.5%"]},
+      {n:"Solid State & Solutions",   note:"Standard physical chemistry",     trend:[4,5,5,4,4,5,4], dir:"stable", sub:["Colligative Properties: 3%","Defects in Solids: 1.5%"]}
     ]}
   }},
   "Mathematics": { slug:"mat", cc:"mat", priorities: {
     A:{ label:"Apex — Spatial & Analytical Rigor", chapters:[
-      {n:"Definite Integration",      note:"11-16% | King's Rule, dominating", trend:[11,12,13,14,15,16,16], dir:"up",      sub:["Properties (King's Rule)","Limit of a Sum","Area bounding curves"]},
-      {n:"Application of Derivatives",note:"14-20% | Most tested topic",   trend:[14,16,15,18,17,19,20], dir:"up",      sub:["Maxima & Minima","Monotonicity/Rolle's","Tangents/Normals"]},
-      {n:"Vectors & 3D Geometry",     note:"10-21% | Massive recent growth",  trend:[10,12,15,18,20,21,20], dir:"up",      sub:["Planes & Lines Intersection","Vector Triple Product","Shortest Distance"]},
-      {n:"Probability",               note:"13-14% | Bayes', random variables",trend:[12,13,14,13,14,14,14], dir:"stable", sub:["Bayes' Theorem","Total Probability","Random Variables"]},
-      {n:"Matrices & Determinants",   note:"8-12% | Abstract properties",     trend:[12,11,10,9,8,9,8],    dir:"down",    sub:["System of Equations","Adjoint/Inverse Properties"]}
+      {n:"Definite Integration",      note:"11-16% | King's Rule, dominating", trend:[11,12,13,14,15,16,16], dir:"up",      sub:["Properties (King's Rule): 7%","Limit of a Sum: 4%","Area bounding curves: 4%"]},
+      {n:"Application of Derivatives",note:"14-20% | Most tested topic",   trend:[14,16,15,18,17,19,20], dir:"up",      sub:["Maxima & Minima: 8%","Monotonicity/Rolle's: 6%","Tangents/Normals: 4%"]},
+      {n:"Vectors & 3D Geometry",     note:"10-21% | Massive recent growth",  trend:[10,12,15,18,20,21,20], dir:"up",      sub:["Planes & Lines Intersection: 9%","Vector Triple Product: 6%","Shortest Distance: 4%"]},
+      {n:"Probability",               note:"13-14% | Bayes', random variables",trend:[12,13,14,13,14,14,14], dir:"stable", sub:["Bayes' Theorem: 6%","Total Probability: 4%","Random Variables: 3%"]},
+      {n:"Matrices & Determinants",   note:"8-12% | Abstract properties",     trend:[12,11,10,9,8,9,8],    dir:"down",    sub:["System of Equations: 5%","Adjoint/Inverse Properties: 4%"]}
     ]},
     B:{ label:"Rank Deciders & Steady Averages", chapters:[
-      {n:"Conic Sections",            note:"11-15% | Parabola, Ellipse, Hyperbola", trend:[15,14,13,12,11,12,11], dir:"down", sub:["Tangents/Normals Properties","Common Tangents","Director Circles"]},
-      {n:"Complex Numbers",           note:"6-9% | Argand plane geometry",         trend:[9,8,9,7,6,7,6],     dir:"down",    sub:["Geometry in Argand Plane","Cube Roots of Unity"]},
-      {n:"Permutations & Combos",     note:"Logical foundation, stable",            trend:[6,7,6,7,6,7,6],     dir:"stable", sub:["Derangements","Grouping/Distribution"]},
-      {n:"Differential Equations",    note:"Paired with integration, rising",       trend:[5,6,7,8,7,8,9],     dir:"up",     sub:["Linear Diff Equations","Variable Separable/Homogeneous"]},
-      {n:"Circles",                   note:"Tied heavily into conics",              trend:[7,6,5,4,5,4,5],     dir:"down",    sub:["Family of Circles","Orthogonal Intersection"]}
+      {n:"Conic Sections",            note:"11-15% | Parabola, Ellipse, Hyperbola", trend:[15,14,13,12,11,12,11], dir:"down", sub:["Tangents/Normals Properties: 6%","Common Tangents: 4%","Director Circles: 2%"]},
+      {n:"Complex Numbers",           note:"6-9% | Argand plane geometry",         trend:[9,8,9,7,6,7,6],     dir:"down",    sub:["Geometry in Argand Plane: 4%","Cube Roots of Unity: 3%"]},
+      {n:"Permutations & Combos",     note:"Logical foundation, stable",            trend:[6,7,6,7,6,7,6],     dir:"stable", sub:["Derangements: 2%","Grouping/Distribution: 3%"]},
+      {n:"Differential Equations",    note:"Paired with integration, rising",       trend:[5,6,7,8,7,8,9],     dir:"up",     sub:["Linear Diff Equations: 4%","Variable Separable/Homogeneous: 3%"]},
+      {n:"Circles",                   note:"Tied heavily into conics",              trend:[7,6,5,4,5,4,5],     dir:"down",    sub:["Family of Circles: 2.5%","Orthogonal Intersection: 2%"]}
     ]},
     C:{ label:"Embedded Concepts", chapters:[
-      {n:"Functions & Limits",        note:"Core calculus prerequisite",        trend:[4,5,4,5,4,5,4], dir:"stable", sub:["L'Hôpital & Expansions","Continuity over Intervals"]},
-      {n:"Sequence and Series",       note:"Frequently embedded",               trend:[5,4,5,4,3,4,3], dir:"down",    sub:["AM-GM-HM Inequality","Telescopic Series"]},
-      {n:"Straight Lines",            note:"Foundational, very low direct Qs", trend:[3,2,3,2,1,2,1], dir:"down",    sub:["Distance Between Lines","Family of Lines"]},
-      {n:"Trigonometry (ITF, SOT)",   note:"5-7% | Blended with other topics", trend:[7,6,5,5,6,5,6], dir:"stable", sub:["ITF Properties","Solving Trig Equations"]}
+      {n:"Functions & Limits",        note:"Core calculus prerequisite",        trend:[4,5,4,5,4,5,4], dir:"stable", sub:["L'Hôpital & Expansions: 2%","Continuity over Intervals: 2%"]},
+      {n:"Sequence and Series",       note:"Frequently embedded",               trend:[5,4,5,4,3,4,3], dir:"down",    sub:["AM-GM-HM Inequality: 2%","Telescopic Series: 1.5%"]},
+      {n:"Straight Lines",            note:"Foundational, very low direct Qs", trend:[3,2,3,2,1,2,1], dir:"down",    sub:["Distance Between Lines: 1%","Family of Lines: 1%"]},
+      {n:"Trigonometry (ITF, SOT)",   note:"5-7% | Blended with other topics", trend:[7,6,5,5,6,5,6], dir:"stable", sub:["ITF Properties: 3%","Solving Trig Equations: 2.5%"]}
     ]}
   }}
 };
@@ -558,6 +560,9 @@ function renderMain() {
         <div class="subj-name">${subName}</div>
       </div>`;
 
+    const blockContent = document.createElement('div');
+    blockContent.className = 'subj-content glass';
+
     Object.entries(sub.priorities).forEach(([pk, pd]) => {
       const sec = document.createElement('div');
       sec.className = 'pri-sec'; sec.dataset.pri = pk.toLowerCase();
@@ -575,7 +580,6 @@ function renderMain() {
       const table = document.createElement('div'); 
       table.className = 'table';
       
-      // STRICT PIXEL WIDTHS for flawless alignment
       const colW = cols.map(() => '110px').join(' ');
       const gridT = `1fr 140px ${colW} 180px`;
 
@@ -630,7 +634,18 @@ function renderMain() {
         const drawer = document.createElement('div'); drawer.className = 'drawer'; drawer.id = `drw-${rk}`;
         
         const subWrap = document.createElement('div'); subWrap.id = `drw-sub-${rk}`; subWrap.style.display = 'none';
-        ch.sub.forEach(s => { const p = document.createElement('span'); p.className='sub-pill'; p.textContent=s; subWrap.appendChild(p); });
+        ch.sub.forEach(s => { 
+          const p = document.createElement('span'); 
+          p.className='sub-pill'; 
+          
+          if(s.includes(':')) {
+            const [name, pct] = s.split(':');
+            p.innerHTML = `${name}<span style="color:var(--amber); margin-left:6px; font-family:'IBM Plex Mono', monospace; font-weight:700;">${pct}</span>`;
+          } else {
+            p.textContent = s; 
+          }
+          subWrap.appendChild(p); 
+        });
         
         const noteWrap = document.createElement('div'); noteWrap.id = `drw-note-${rk}`; noteWrap.style.display = 'none';
         const ta = document.createElement('textarea'); ta.className = 'note-input';
@@ -643,11 +658,14 @@ function renderMain() {
         noteWrap.appendChild(ta);
 
         drawer.appendChild(subWrap); drawer.appendChild(noteWrap);
-        row.appendChild(drawer); table.appendChild(row);
+        row.appendChild(drawer); 
+        table.appendChild(row);
       });
 
-      tableWrap.appendChild(table); sec.appendChild(tableWrap); block.appendChild(sec);
+      tableWrap.appendChild(table); sec.appendChild(tableWrap); 
+      blockContent.appendChild(sec);
     });
+    block.appendChild(blockContent);
     inner.appendChild(block);
   });
 
@@ -783,7 +801,7 @@ function confirmReset() {
   }
 }
 
-// ═════════════════════ CONFETTI ══════════════════════════════
+// ═════════════════════ CONFETTI ═══════════════════════════
 let confettiAnimating = false;
 function fireConfetti() {
   if (confettiAnimating) return; confettiAnimating = true;
